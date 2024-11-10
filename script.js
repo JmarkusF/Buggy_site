@@ -23,11 +23,12 @@ function store(zipcode) {
 zipStore.innerHTML = zipItems
 }
 
-submitBtn.addEventListener("click", function() {
+submitBtn.addEventListener("click", async function() {
     zipCodes.push(inputEl.value)
+    const coords = await getCoordinates(inputEl.value)
     inputEl.value = ""
-    localStorage.setItem("zipCodes", JSON.stringify(zipCodes))
-    store(zipCodes)
+    localStorage.setItem("zipCodes", JSON.stringify(coords))
+    store(coords)
 } )
 
 async function getCoordinates(zipcode) {
@@ -37,10 +38,20 @@ try {
     if(!response.ok) {
     throw new Error(`Response status: ${response.status}`);    
     }
-
-const json = await response.json();
-console.log(json);
+    
+const resp_object = await response.json();
+for (const city of resp_object.results) {
+    console.log(city);
+    if (city.country_code === "US"){
+        console.log(city.name)
+        const location = {
+            latitude:city.latitude,
+            longitude:city.longitude
+        }
+        return location
+    }
+}
 } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
 }
 }
