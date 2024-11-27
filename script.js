@@ -23,7 +23,7 @@ function store(zipcode) {
   zipStore.innerHTML = zipItems;
 }
 
-submitBtn.addEventListener("click", function () {
+submitBtn?.addEventListener("click", function () {
 
     const zipcode = inputEl.value; 
     zipCodes.push(zipcode);
@@ -92,4 +92,7 @@ async function getWeather(coords) {
       throw error;
     }
   }
-  
+  function calculateBuggyRespone(temperature, weather_code) {
+    return 'Kind of Hot for me! Maybe a short walk or laying down outside.'
+  }
+  module.exports = calculateBuggyRespone;
