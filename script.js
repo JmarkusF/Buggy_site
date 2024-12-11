@@ -123,7 +123,7 @@ function calculateBuggyResponse(temperature, weather_code) {
     buggyPicture ="Kind of Cold.JPEG"
   }
   else if (29 >= temperature && temperature >= 15) {
-    buggystatement = "If it isn't wet out, and with a jacket, I should be okay for a medium walk. But if it is wet out my paws won't last more than 5 to 10 minutes."
+    buggystatement = "If it isn't wet out, and with a jacket, I should be okay for a medium walk. But if it is wet out, my paws won't last more than 5 to 10 minutes."
     buggyPicture ="Buggy Cold.JPEG"
   }
   else if (14 >= temperature && temperature >= 0) {

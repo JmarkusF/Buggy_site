@@ -31,7 +31,7 @@ test('kind of cold',() => {
 
 test('too cold',() => {
     for (let temp = 15; temp <= 29; temp++) {
-    expect(calculateBuggyResponse(temp, 1)).toStrictEqual(["If it isn't wet out, and with a jacket, I should be okay for a medium walk. But if it is wet out my paws won't last more than 5 to 10 minutes.","Buggy Cold.JPEG"])
+    expect(calculateBuggyResponse(temp, 1)).toStrictEqual(["If it isn't wet out, and with a jacket, I should be okay for a medium walk. But if it is wet out, my paws won't last more than 5 to 10 minutes.","Buggy Cold.JPEG"])
     }
 })
 
