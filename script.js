@@ -3,6 +3,8 @@ const submitBtn = document.getElementById("submit-btn");
 const inputEl = document.getElementById("zipcode");
 const zipStore = document.getElementById("storedzip");
 const saysBuggy = document.getElementById("buggysays")
+const saysBuggyPic = document.getElementById("buggysayspic")
+
 // const zipcodeFromLocalStorage = JSON.parse(localStorage.getItem("zipCodes"))
 
 // if (zipcodeFromLocalStorage) {
@@ -33,7 +35,11 @@ submitBtn?.addEventListener("click", function () {
       if (coords) {
         getWeather(coords).then((weather) => {
           const buggyResponse = calculateBuggyResponse(weather.current.temperature_2m,weather.current.weather_code)
-          saysBuggy.innerText = buggyResponse
+          // console.log(buggyResponse)
+          // const buggyResponse = ["test", "Buggy No Think.JPG"]
+          saysBuggy.innerText = buggyResponse[0]
+          saysBuggyPic.src = `images//${buggyResponse[1]}`
+
           console.log(weather);
         });
       } else {
@@ -94,36 +100,46 @@ async function getWeather(coords) {
   }
 }
 function calculateBuggyResponse(temperature, weather_code) {
+  let buggyPicture = ""
   let buggystatement = ""
   if (85 >= temperature && temperature >= 76) {
-    buggystatement = "Kind of Hot for me! Maybe a short walk or laying down outside.";
+    buggystatement = "Kind of hot for me! Maybe a short walk or laying down outside.";
+    buggyPicture ="Buggy Hot.jpeg"
   }
   else if (100 >= temperature && temperature >= 86) {
-    buggystatement = 'It is too hot for me. My paws would get burnt by the pavement, and I might get heat stroke if I am out to long. Water and shade help.'
+    buggystatement = 'It is too hot for me. My paws would get burnt by the pavement, and I might get heat stroke if I am out for too long. Water and shade help.'
+    buggyPicture ="Buggy Too Hot.JPEG"
   }
   else if (75 >= temperature && temperature >= 66) {
     buggystatement = "It is nice, but I sure don't want it to get any warmer! Maybe a rest break in 15 to 20."
+    buggyPicture ="Kind of Hot.JPEG"
   }
   else if (65 >= temperature && temperature >= 50) {
     buggystatement = 'Perfect day for a long walk with lots of smells, pets, and treats!!!'
+    buggyPicture ="Buggy Perfect Day.JPEG"
   }
   else if (49 >= temperature && temperature >= 30) {
-    buggystatement = 'Kind of Cold for me! Maybe a medium walk, or a jacket. But we should definitely go get coffee!'
+    buggystatement = 'Kind of cold for me! Maybe a medium walk, or a jacket for a longer walk. But we should definitely go get coffee!'
+    buggyPicture ="Kind of Cold.JPEG"
   }
   else if (29 >= temperature && temperature >= 15) {
-    buggystatement = "If it isn't wet out I should be okay for a medium walk. But if it is wet out my paws won't last more than 5 to 10 minutes."
+    buggystatement = "If it isn't wet out, and with a jacket, I should be okay for a medium walk. But if it is wet out my paws won't last more than 5 to 10 minutes."
+    buggyPicture ="Buggy Cold.JPEG"
   }
   else if (14 >= temperature && temperature >= 0) {
     buggystatement = "I would love to just use the bathroom."
+    buggyPicture ="Buggy Too Cold.PNG"
   }
   else { 
     buggystatement = "Buggy doesn't know what to think!"
+    buggyPicture = "Buggy No Think.JPG"
   }
   if (![0,1,2,3,45,48].includes(weather_code)) {
     buggystatement += " " + "Seems to be some percipitation as well, so probably a shorter than normal walk, unfortunately."
+    buggyPicture ="Weather Code.JPEG"
   }
   console.log(buggystatement)
-  return buggystatement 
+  return [buggystatement, buggyPicture]
 }
 
 module.exports = calculateBuggyResponse;

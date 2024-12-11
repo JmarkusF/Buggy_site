@@ -8,13 +8,19 @@
             <link rel="stylesheet" href="style.css">
         </head>
         <body>
-            <h1> Buggy Says "Lets find out if it is okay for a walk!" </h1>
+            <div id="header">
+                <h1> Buggy Says </h1>
+            </div>
+            <div id="buggy">
+                 <img id="buggysayspic" src="images/Buggy Says.JPEG" alt="serious Buggy" />
+                 <h2 id="buggysays">"Lets find out if it is okay for a walk!"</h2>   
+            </div>
+            <div id="zipinput">    
                 <form>
-                    <input type="text" id="zipcode">
-                    <input type="button" id="submit-btn" value="Submit">
+                    <input type="text" placeholder="Zipcode" id="zipcode">
+                    <input type="button" id="submit-btn" value="Enter">
                 </form>
-                <p id="storedzip"></p>
-                <p id="buggysays"></p>
+            </div>
             <script src="script.js"></script>
         </body>
     </main>
