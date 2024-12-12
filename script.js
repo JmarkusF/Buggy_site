@@ -135,7 +135,7 @@ function calculateBuggyResponse(temperature, weather_code) {
     buggyPicture = "Buggy No Think.JPG"
   }
   if (![0,1,2,3,45,48].includes(weather_code)) {
-    buggystatement += " " + "Seems to be some percipitation as well, so probably a shorter than normal walk, unfortunately."
+    buggystatement = "Seems to be some percipitation as well, so probably a shorter than normal walk, unfortunately."
     buggyPicture ="Weather Code.JPEG"
   }
   console.log(buggystatement)

@@ -42,6 +42,6 @@ test('way too cold',() => {
 })
 test('way too rainy',() => {
     for (let temp = 0; temp <= 14; temp++) {
-    expect(calculateBuggyResponse(temp, 63)).toStrictEqual(["I would love to just use the bathroom. Seems to be some percipitation as well, so probably a shorter than normal walk, unfortunately.","Weather Code.JPEG"])
+    expect(calculateBuggyResponse(temp, 63)).toStrictEqual(["Seems to be some percipitation as well, so probably a shorter than normal walk, unfortunately.","Weather Code.JPEG"])
     }
 })
